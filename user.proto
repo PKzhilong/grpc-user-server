@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package user;
+
+
+service UserInfo {
+
+	rpc GetStudentByID (RequestStudent) returns (Student) {}
+	rpc GetUserByID (RequestUser) returns (User) {}
+
+}
+
+message RequestStudent {
+	int64 student_id = 1;
+	string mobile = 2;
+}
+
+message Student {
+ 	int64 id = 1;
+	string name = 2;
+	string mobile = 3;
+	int64 user_id = 4;
+	int32 age = 5;
+}
+
+message RequestUser {
+	int64 user_id = 1;
+	string mobile = 2;
+}
+
+message User {
+	int64 id = 1;
+	string mobile = 2;
+	Student student = 3;
+}
